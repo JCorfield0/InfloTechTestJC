@@ -1,3 +1,4 @@
+using System;
 using UserManagement.Models;
 using UserManagement.Services.Domain.Interfaces;
 using UserManagement.Web.Models.Users;
@@ -23,15 +24,17 @@ public class UserControllerTests
             .Which.Items.Should().BeEquivalentTo(users);
     }
 
-    private User[] SetupUsers(string forename = "Johnny", string surname = "User", string email = "juser@example.com", bool isActive = true)
+    private User[] SetupUsers(string forename = "Johnny", string surname = "User", string email = "juser@example.com", DateTime dateOfBirth = default, bool isActive = true)
     {
         var users = new[]
         {
             new User
             {
+                Id = 10,
                 Forename = forename,
                 Surname = surname,
                 Email = email,
+                DateOfBirth = dateOfBirth,
                 IsActive = isActive
             }
         };

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UserManagement.Models;
 using UserManagement.Services.Domain.Implementations;
@@ -11,7 +12,7 @@ public class UserServiceTests
     {
         // Arrange: Initializes objects and sets the value of the data that is passed to the method under test.
         var service = CreateService();
-        var users = SetupUsers();
+        var users = SetupUsers(dateOfBirth: DateTime.Now);
 
         // Act: Invokes the method under test with the arranged parameters.
         var result = service.GetAll();
@@ -20,15 +21,17 @@ public class UserServiceTests
         result.Should().BeSameAs(users);
     }
 
-    private IQueryable<User> SetupUsers(string forename = "Johnny", string surname = "User", string email = "juser@example.com", bool isActive = true)
+    private IQueryable<User> SetupUsers(string forename = "Johnny", string surname = "User", string email = "juser@example.com", DateTime dateOfBirth = default, bool isActive = true)
     {
         var users = new[]
         {
             new User
             {
+                Id = 10,
                 Forename = forename,
                 Surname = surname,
                 Email = email,
+                DateOfBirth = dateOfBirth,
                 IsActive = isActive
             }
         }.AsQueryable();
