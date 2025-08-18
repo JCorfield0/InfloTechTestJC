@@ -12,6 +12,8 @@ public class UserServiceTests
     {
         // Arrange: Initializes objects and sets the value of the data that is passed to the method under test.
         var service = CreateService();
+
+        // Giving this the current datetime here as I don't belive it's possible to get a meaningful compile-time constant for DateTime
         var users = SetupUsers(dateOfBirth: DateTime.Now);
 
         // Act: Invokes the method under test with the arranged parameters.
