@@ -30,4 +30,11 @@ public class UsersController : Controller
             IsActive = p.IsActive
         }).ToList()));
     }
+
+
+    [HttpPost("ShowAddDialog")]
+    public IActionResult ShowAddDialog()
+    {
+        return PartialView("_AddUserDialog");
+    }
 }
